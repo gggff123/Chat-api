@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+os
+requests
+llama-cpp-python
