@@ -1,5 +1,16 @@
 from fastapi import FastAPI
 import llama
+import os
+import requests
+
+MODEL_URL = "https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF/blob/main/smollm2-360m-instruct-q8_0.gguf"
+MODEL_PATH = "smollm2-360m-instruct-q8_0.gguf"
+
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model...")
+    r = requests.get(MODEL_URL)
+    with open(MODEL_PATH, "wb") as f:
+        f.write(r.content)
 def chat(inputs):
     prompt=inputs
     res=llama.addprompt(prompt)
